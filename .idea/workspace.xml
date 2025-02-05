@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a06423b6-d621-4829-8da6-f14c578c2e0b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/train_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/password_dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/password_dataset.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generate_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate_dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/evaluate_models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +32,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.evaluate_models.executor": "Run",
     "Python.generate_dataset.executor": "Run",
     "Python.train_models.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
