@@ -21,7 +21,7 @@ def generate_password(length=12):
 
 
 def assess_security(password):
-    """Şifrenin güvenlik seviyesini belirler."""
+
     score = 0
     if any(c.islower() for c in password):
         score += 1
@@ -34,15 +34,15 @@ def assess_security(password):
     if len(password) >= 12:
         score += 1
 
-    security_levels = {1: "Zayıf", 2: "Orta", 3: "Güvenli"}
-    return security_levels.get(score, "Güvenli")
+    security_levels = {1: "Very Weak", 2: "Weak", 3: "Moderate", 4: "Strong", 5: "Very Strong"}
+    return security_levels.get(score, "Very Weak")
 
 
 def create_password_dataset(size=1000000):
-    """Belirtilen sayıda rastgele şifre içeren bir veri seti oluşturur."""
+
     data = []
     for _ in range(size):
-        length = random.randint(8, 16)  # Şifre uzunluğu 8-16 karakter arasında rastgele seçilir
+        length = random.randint(8, 16)
         password = generate_password(length)
         security_level = assess_security(password)
 
@@ -55,7 +55,12 @@ def create_password_dataset(size=1000000):
             "Security_Level": security_level
         })
 
-    return pd.DataFrame(data)
+    df = pd.DataFrame(data)
+
+
+    df = df.groupby("Security_Level", group_keys=False).apply(lambda x: x.sample(min(len(x), size // 5)))
+
+    return df
 
 
 # 'PassGenAI/data' klasörünü kontrol et ve yoksa oluştur
