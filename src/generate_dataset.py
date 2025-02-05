@@ -3,36 +3,60 @@ import string
 import pandas as pd
 import os
 
-def generate_password(length=12, use_upper=True, use_digits=True, use_special=True):
-    """Belirtilen kurallara göre rastgele şifre üretir."""
-    lower = string.ascii_lowercase
-    upper = string.ascii_uppercase if use_upper else ""
-    digits = string.digits if use_digits else ""
-    special = "!@#$%^&*()_+-=[]{}|;:,.<>?/" if use_special else ""
 
-    all_chars = lower + upper + digits + special
-    return ''.join(random.choices(all_chars, k=length))
+def generate_password(length=12):
+    """En az bir büyük harf, küçük harf, rakam ve özel karakter içeren şifre üretir."""
+    lower = random.choice(string.ascii_lowercase)
+    upper = random.choice(string.ascii_uppercase)
+    digit = random.choice(string.digits)
+    special = random.choice("!@#$%^&*()_+-=[]{}|;:,.<>?/")
 
-def create_password_dataset(size=20000):
+    remaining_length = length - 4
+    all_chars = string.ascii_letters + string.digits + "!@#$%^&*()_+-=[]{}|;:,.<>?/"
+    remaining_chars = ''.join(random.choices(all_chars, k=remaining_length))
+
+    password = list(lower + upper + digit + special + remaining_chars)
+    random.shuffle(password)
+    return ''.join(password)
+
+
+def assess_security(password):
+    """Şifrenin güvenlik seviyesini belirler."""
+    score = 0
+    if any(c.islower() for c in password):
+        score += 1
+    if any(c.isupper() for c in password):
+        score += 1
+    if any(c.isdigit() for c in password):
+        score += 1
+    if any(c in "!@#$%^&*()_+-=[]{}|;:,.<>?/" for c in password):
+        score += 1
+    if len(password) >= 12:
+        score += 1
+
+    security_levels = {1: "Zayıf", 2: "Orta", 3: "Güvenli"}
+    return security_levels.get(score, "Güvenli")
+
+
+def create_password_dataset(size=1000000):
     """Belirtilen sayıda rastgele şifre içeren bir veri seti oluşturur."""
     data = []
     for _ in range(size):
-        length = random.randint(8, 24)  # Şifre uzunluğu 8-24 karakter arasında rastgele seçilir
-        use_upper = random.choice([True, False])
-        use_digits = random.choice([True, False])
-        use_special = random.choice([True, False])
-
-        password = generate_password(length, use_upper, use_digits, use_special)
+        length = random.randint(8, 16)  # Şifre uzunluğu 8-16 karakter arasında rastgele seçilir
+        password = generate_password(length)
+        security_level = assess_security(password)
 
         data.append({
             "Password": password,
             "Length": length,
-            "Has_Uppercase": int(use_upper),
-            "Has_Digits": int(use_digits),
-            "Has_Special": int(use_special)
+            "Has_Uppercase": 1,
+            "Has_Digits": 1,
+            "Has_Special": 1,
+            "Security_Level": security_level
         })
 
     return pd.DataFrame(data)
+
 
 # 'PassGenAI/data' klasörünü kontrol et ve yoksa oluştur
 output_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
