@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a06423b6-d621-4829-8da6-f14c578c2e0b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/evaluate_models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/streamlit_app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/password_dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/password_dataset.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/LogisticRegression.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/RandomForest.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/SVM.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generate_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/train_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train_models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,14 +41,20 @@
   "keyToString": {
     "Python.evaluate_models.executor": "Run",
     "Python.generate_dataset.executor": "Run",
+    "Python.streamlit_app.executor": "Run",
     "Python.train_models.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/remou/Documents/GitHub/PassGenAI"
+    "last_opened_file_path": "C:/Users/remou/Documents/GitHub/PassGenAI/data"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\remou\Documents\GitHub\PassGenAI\data" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
